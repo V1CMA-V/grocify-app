@@ -46,18 +46,18 @@ export default function SignInScreen() {
           </Text>
         </View>
 
-        <Text className="text-center text-[14px] text-primary-foreground/80 dark:text-foreground/75">
+        <Text className="mt-3 text-center text-[14px] text-muted-foreground">
           Choose a social provider and jump right into your personalized grocery
           experience.
         </Text>
 
-        <View className="mt-6 space-y-3">
+        <View className="mt-6">
           <Pressable
-            className={`mb-3 h-1/4 flex-row items-center rounded-2xl border border-border bg-card px-4 active:opacity-90 ${isLoading ? 'opacity-70' : ''}`}
+            className={`h-16 flex-row items-center rounded-2xl border border-border bg-card px-4 active:opacity-90 ${isLoading ? 'opacity-70' : ''}`}
             disabled={isLoading}
             onPress={() => handleSocialAuth('oauth_google')}
           >
-            <View className=" items-center justify-center rounded-full bg-white">
+            <View className="h-11 w-11 items-center justify-center rounded-full bg-white">
               <Image
                 source={require('../../../assets/images/google.png')}
                 style={{ width: 40, height: 40 }}
@@ -67,10 +67,33 @@ export default function SignInScreen() {
               {isGoogleClicked ? 'Signing in...' : 'Continue with Google'}
             </Text>
 
-            <FontAwesome name="angle-right" size={20} color="#fff" />
+            <FontAwesome name="angle-right" size={20} color="#9ca3af" />
           </Pressable>
+
+          <View className="mt-4 flex-row items-center gap-3">
+            <View className="h-px flex-1 bg-border" />
+            <Text className="text-xs uppercase tracking-[1px] text-muted-foreground">
+              Or
+            </Text>
+            <View className="h-px flex-1 bg-border" />
+          </View>
+
+          <View className="mt-4 items-center rounded-2xl border border-dashed border-border bg-secondary/40 px-4 py-5">
+            <View className="flex-row items-center gap-5 opacity-40">
+              <FontAwesome name="apple" size={26} color="#9ca3af" />
+              <FontAwesome name="facebook" size={24} color="#9ca3af" />
+              <FontAwesome name="envelope" size={22} color="#9ca3af" />
+            </View>
+            <Text className="mt-3 text-sm font-semibold text-card-foreground">
+              More sign-in options
+            </Text>
+            <Text className="mt-1 text-xs text-muted-foreground">
+              Coming soon
+            </Text>
+          </View>
         </View>
-        <Text className="text-center text-sm leading-5 text-muted-foreground">
+
+        <Text className="mt-auto pt-4 text-center text-sm leading-5 text-muted-foreground">
           By continuing, you agree to our Terms of Service and Privacy Policy.
         </Text>
       </View>

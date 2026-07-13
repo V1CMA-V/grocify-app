@@ -1,10 +1,12 @@
 import { useSSO } from '@clerk/expo'
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import { Alert } from 'react-native'
 
 const useSocialAuth = () => {
   const [loadingStrategy, setLoadingStrategy] = useState<string | null>(null)
   const { startSSOFlow } = useSSO()
+  const router = useRouter()
 
   const handleSocialAuth = async (strategy: 'oauth_google') => {
     if (loadingStrategy) return // guard against multiple simultaneous auth attempts
@@ -23,6 +25,7 @@ const useSocialAuth = () => {
       }
 
       await setActive({ session: createdSessionId })
+      router.replace('/')
     } catch (error) {
       console.error('Error during social authentication:', error)
       Alert.alert(

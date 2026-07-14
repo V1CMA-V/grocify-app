@@ -49,7 +49,7 @@ const InsightsCategorySection = () => {
                 className="h-2 rounded-full"
                 style={{
                   width: `${widthPercent}%` as `${number}%`,
-                  backgroundColor: categoryColors[category] ?? 'bg-gray-500',
+                  backgroundColor: categoryColors[category] ?? '#9ca3af',
                 }}
               />
             </View>

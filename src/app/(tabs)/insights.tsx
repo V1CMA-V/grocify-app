@@ -4,26 +4,33 @@ import InsightsPrioritySection from '@/components/insights/InsightsPrioritySecti
 import InsightsStatsSection from '@/components/insights/InsightsStatsSection'
 import UserProfile from '@/components/insights/UserProfile'
 import TabScreenBackground from '@/components/tabsScreenBackground'
-import { ScrollView } from 'react-native'
+import { ScrollView, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const InsightsScreen = () => {
+  const insets = useSafeAreaInsets()
+
+  // iOS gets the top inset from contentInsetAdjustmentBehavior; Android does not
+  const topPadding = process.env.EXPO_OS === 'android' ? insets.top + 12 : 12
+
   return (
-    <ScrollView
-      className="flex-1 bg-background py-4"
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ padding: 20, gap: 14 }}
-      contentInsetAdjustmentBehavior="automatic"
-    >
+    <View className="flex-1 bg-background">
       <TabScreenBackground />
 
-      <UserProfile />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ padding: 20, paddingTop: topPadding, gap: 14 }}
+        contentInsetAdjustmentBehavior="automatic"
+      >
+        <UserProfile />
 
-      <InsightsStatsSection />
-      <InsightsCategorySection />
-      <InsightsPrioritySection />
+        <InsightsStatsSection />
+        <InsightsCategorySection />
+        <InsightsPrioritySection />
 
-      <ClearCompletedButton />
-    </ScrollView>
+        <ClearCompletedButton />
+      </ScrollView>
+    </View>
   )
 }
 

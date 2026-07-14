@@ -5,7 +5,7 @@ const InsightsPrioritySection = () => {
   const { items } = useGroceryStore()
 
   const highPriority = items.filter(
-    (item) => item.priority == 'high' && !item.purchased,
+    (item) => item.priority === 'high' && !item.purchased,
   ).length
 
   const highPriorityTone =
@@ -17,7 +17,7 @@ const InsightsPrioritySection = () => {
     <View className="rounded-3xl border border-border bg-card p-4">
       <View className="flex-row items-center justify-between">
         <Text className="text-sm font-semibold text-card-foreground">
-          High priority remaning
+          High priority remaining
         </Text>
         <View
           className={`rounded-full px-3 py-1 ${highPriority ? 'bg-priority-high' : 'bg-priority-low'}`}
@@ -30,7 +30,10 @@ const InsightsPrioritySection = () => {
         </View>
       </View>
 
-      <Text className="mt-1 text-3xl font-extrabold text-foreground">
+      <Text
+        className="mt-1 text-3xl font-extrabold text-foreground"
+        style={{ fontVariant: ['tabular-nums'] }}
+      >
         {highPriority}
       </Text>
       <Text className="mt-1 text-sm text-muted-foreground">

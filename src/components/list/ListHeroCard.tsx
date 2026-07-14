@@ -11,7 +11,7 @@ const ListHeroCard = () => {
     : 0
 
   return (
-    <View className="rounded-3xl bg-primary p-5 mt-10">
+    <View className="rounded-3xl bg-primary p-5">
       <Text className="text-sm font-semibold uppercase tracking-[1px] text-primary-foreground/70">
         Today
       </Text>

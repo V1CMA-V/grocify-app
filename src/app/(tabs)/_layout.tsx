@@ -1,6 +1,6 @@
 import { useAuth } from '@clerk/expo'
 import { Redirect } from 'expo-router'
-import { NativeTabs } from 'expo-router/build/native-tabs'
+import { NativeTabs } from 'expo-router/unstable-native-tabs'
 import { useColorScheme } from 'nativewind'
 
 export default function TabsLayout() {
@@ -8,7 +8,16 @@ export default function TabsLayout() {
 
   const { colorScheme } = useColorScheme()
   const isDark = colorScheme === 'dark'
+
   const tabTintColor = isDark ? 'hsl(142 70% 54%)' : 'hsl(147 75% 33%)'
+  const tabBarBackground = isDark ? 'hsl(149 27% 12%)' : 'hsl(0 0% 100%)'
+  const inactiveColor = isDark ? 'hsl(140 17% 68%)' : 'hsl(146 26% 40%)'
+  const indicatorColor = isDark
+    ? 'hsla(142, 70%, 54%, 0.18)'
+    : 'hsla(147, 75%, 33%, 0.14)'
+  const rippleColor = isDark
+    ? 'hsla(142, 70%, 54%, 0.12)'
+    : 'hsla(147, 75%, 33%, 0.1)'
 
   if (!isLoaded) {
     return null
@@ -19,7 +28,19 @@ export default function TabsLayout() {
   }
 
   return (
-    <NativeTabs tintColor={tabTintColor}>
+    <NativeTabs
+      tintColor={tabTintColor}
+      backgroundColor={tabBarBackground}
+      iconColor={{ default: inactiveColor, selected: tabTintColor }}
+      labelStyle={{
+        default: { color: inactiveColor },
+        selected: { color: tabTintColor, fontWeight: '600' },
+      }}
+      indicatorColor={indicatorColor}
+      rippleColor={rippleColor}
+      labelVisibilityMode="labeled"
+      minimizeBehavior="onScrollDown"
+    >
       <NativeTabs.Trigger name="index">
         <NativeTabs.Trigger.Label>List</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon

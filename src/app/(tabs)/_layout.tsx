@@ -48,7 +48,7 @@ export default function TabsLayout() {
             default: 'list.bullet.clipboard',
             selected: 'list.bullet.clipboard.fill',
           }}
-          md="list"
+          md={{ default: 'list', selected: 'checklist' }}
         />
       </NativeTabs.Trigger>
 
@@ -59,7 +59,7 @@ export default function TabsLayout() {
             default: 'plus.circle',
             selected: 'plus.circle.fill',
           }}
-          md="add"
+          md={{ default: 'add', selected: 'add_circle' }}
         />
       </NativeTabs.Trigger>
 
@@ -70,7 +70,7 @@ export default function TabsLayout() {
             default: 'chart.bar',
             selected: 'chart.bar.fill',
           }}
-          md="analytics"
+          md={{ default: 'analytics', selected: 'monitoring' }}
         />
       </NativeTabs.Trigger>
     </NativeTabs>

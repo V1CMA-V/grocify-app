@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native'
 
-const insights = () => {
+const InsightsScreen = () => {
   return (
     <View>
       <Text>insights</Text>
@@ -8,4 +8,4 @@ const insights = () => {
   )
 }
 
-export default insights
+export default InsightsScreen

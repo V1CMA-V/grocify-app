@@ -3,6 +3,7 @@ import {
   GroceryPriority,
   useGroceryStore,
 } from '@/store/grocery-store'
+import { hapticNotify } from '@/lib/haptics'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 import { useColorScheme } from 'nativewind'
@@ -72,7 +73,12 @@ const PlannerFormCard = () => {
     setIsSubmitting(false)
 
     // Keep the form as-is on failure so the user can retry without retyping
-    if (!created) return
+    if (!created) {
+      hapticNotify('error')
+      return
+    }
+
+    hapticNotify('success')
 
     setName('')
     setQuantity('1')

@@ -1,3 +1,4 @@
+import { hapticImpact } from '@/lib/haptics'
 import { GroceryItem, useGroceryStore } from '@/store/grocery-store'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { useColorScheme } from 'nativewind'
@@ -30,7 +31,10 @@ const PendingItemCard = ({ item }: { item: GroceryItem }) => {
           <Pressable
             className="mt-1 size-7 items-center justify-center rounded-full border-2 border-border bg-card active:border-primary active:bg-primary/10"
             hitSlop={10}
-            onPress={() => togglePurchased(item.id)}
+            onPress={() => {
+              hapticImpact()
+              togglePurchased(item.id)
+            }}
           />
 
           <View className="flex-1">

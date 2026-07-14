@@ -1,3 +1,4 @@
+import { hapticNotify } from '@/lib/haptics'
 import { useGroceryStore } from '@/store/grocery-store'
 import { Alert, Pressable, Text } from 'react-native'
 
@@ -16,7 +17,10 @@ const ClearCompletedButton = () => {
         {
           text: 'Clear',
           style: 'destructive',
-          onPress: () => clearPurchased(),
+          onPress: async () => {
+            await clearPurchased()
+            hapticNotify(useGroceryStore.getState().error ? 'error' : 'success')
+          },
         },
       ],
     )

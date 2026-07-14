@@ -1,3 +1,4 @@
+import { hapticImpact } from '@/lib/haptics'
 import { useGroceryStore } from '@/store/grocery-store'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { useColorScheme } from 'nativewind'
@@ -40,7 +41,10 @@ const CompletedItems = () => {
             <View className="mt-3 flex-row items-center justify-between rounded-2xl border border-border bg-card px-3 py-2">
               <View className="flex-row items-center gap-2">
                 <Pressable
-                  onPress={() => togglePurchased(item.id)}
+                  onPress={() => {
+                    hapticImpact()
+                    togglePurchased(item.id)
+                  }}
                   className="h-6 w-6 items-center justify-center rounded-full bg-success active:opacity-70"
                   hitSlop={10}
                 >

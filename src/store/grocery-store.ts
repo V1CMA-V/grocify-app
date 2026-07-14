@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 export type GroceryCategory = "Produce" | "Dairy" | "Bakery" | "Pantry" | "Snacks"
-export type GroceryPriority = "Low" | "Medium" | "High"
+export type GroceryPriority = "low" | "medium" | "high"
 
 export type GroceryItem = {
   id: string
